@@ -129,15 +129,17 @@ class ViewController: UIViewController {
         var successfulSwipe = false
         
         for i in 0...3 {
+            var x = 0
             for j in 0...3 {
                 var tmp = j
-                while tmp-1 >= 0 && map[i][tmp-1].text! == "0" {
+                while tmp-1 >= x && map[i][tmp-1].text! == "0" {
                    tmp -= 1
                 }
-                if tmp-1 >= 0 && map[i][tmp-1].text! == map[i][j].text! {
+                if tmp-1 >= x && map[i][tmp-1].text! == map[i][j].text! {
                     map[i][tmp-1].text = String(Int(map[i][j].text!)!*2)
                     map[i][j].text = "0"
                     successfulSwipe = true
+                    x += 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
                 } else if map[i][tmp].text! == "0" {
                     map[i][tmp].text = map[i][j].text!
@@ -154,6 +156,7 @@ class ViewController: UIViewController {
         var successfulSwipe = false
         
         for i in 0...3 {
+            var x = 3
             for j in (0...3).reversed() {
                 var tmp = j
                 while tmp+1 <= 3 && map[i][tmp+1].text! == "0" {
@@ -163,6 +166,7 @@ class ViewController: UIViewController {
                     map[i][tmp+1].text = String(Int(map[i][j].text!)!*2)
                     map[i][j].text = "0"
                     successfulSwipe = true
+                    x -= 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
                 } else if map[i][tmp].text! == "0" {
                     map[i][tmp].text = map[i][j].text!
@@ -179,15 +183,17 @@ class ViewController: UIViewController {
         var successfulSwipe = false
         
         for j in 0...3 {
+            var x = 0
             for i in 0...3 {
                 var tmp = i
-                while tmp-1 >= 0 && map[tmp-1][j].text! == "0" {
+                while tmp-1 >= x && map[tmp-1][j].text! == "0" {
                    tmp -= 1
                 }
-                if tmp-1 >= 0 && map[tmp-1][j].text! == map[i][j].text! {
+                if tmp-1 >= x && map[tmp-1][j].text! == map[i][j].text! {
                     map[tmp-1][j].text = String(Int(map[i][j].text!)!*2)
                     map[i][j].text = "0"
                     successfulSwipe = true
+                    x += 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
                 } else if map[tmp][j].text! == "0" {
                     map[tmp][j].text = map[i][j].text!
@@ -204,15 +210,17 @@ class ViewController: UIViewController {
         var successfulSwipe = false
         
         for j in 0...3 {
-            for i in (0...3).reversed() {
+            var x = 3
+            for i in (0...x).reversed() {
                 var tmp = i
-                while tmp+1 <= 3 && map[tmp+1][j].text! == "0" {
+                while tmp+1 <= x && map[tmp+1][j].text! == "0" {
                     tmp += 1
                 }
-                if tmp+1 <= 3 && map[tmp+1][j].text! == map[i][j].text! {
+                if tmp+1 <= x && map[tmp+1][j].text! == map[i][j].text! {
                     map[tmp+1][j].text = String(Int(map[i][j].text!)!*2)
                     map[i][j].text = "0"
                     successfulSwipe = true
+                    x -= 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
                 } else if map[tmp][j].text! == "0" {
                     map[tmp][j].text = map[i][j].text!
