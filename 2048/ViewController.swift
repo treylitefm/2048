@@ -13,12 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet var cells: [UILabel]!
    
     var map: Array<[UILabel]> = [[], [], [], []]
+    var topScore = Int()
+    var score = Int()
     
     @IBOutlet var Up: UISwipeGestureRecognizer!
     @IBOutlet var Right: UISwipeGestureRecognizer!
     @IBOutlet var Down: UISwipeGestureRecognizer!
     @IBOutlet var Left: UISwipeGestureRecognizer!
     @IBOutlet var Reset: UIPinchGestureRecognizer!
+    @IBOutlet weak var ScoreNum: UILabel!
+    @IBOutlet weak var TopScoreValue: UILabel!
     
     @IBAction func resetPinch(_ sender: UIPinchGestureRecognizer) {
         print(sender, sender.state)
@@ -32,10 +36,19 @@ class ViewController: UIViewController {
         for cell in cells {
             cell.text = "0"
         }
-        
+        score = 0
+        ScoreNum.text = String(score)
         randomNewTile()
         randomNewTile()
         updateColors()
+    }
+    
+    func scoreUpdate(){
+        if score > topScore {
+            topScore = score
+        }
+        ScoreNum.text = String(score)
+        TopScoreValue.text = String(topScore)
     }
     
     let colors: [String:UIColor] = [
@@ -56,6 +69,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ScoreNum.text = "0"
+        TopScoreValue.text = "0"
         Up.direction = UISwipeGestureRecognizerDirection.up
         Right.direction = UISwipeGestureRecognizerDirection.right
         Down.direction = UISwipeGestureRecognizerDirection.down
@@ -137,10 +152,11 @@ class ViewController: UIViewController {
                 }
                 if tmp-1 >= x && map[i][tmp-1].text! == map[i][j].text! {
                     map[i][tmp-1].text = String(Int(map[i][j].text!)!*2)
+                    score += Int(map[i][tmp-1].text!)!
+                    scoreUpdate()
                     map[i][j].text = "0"
                     successfulSwipe = true
                     x += 1
-                    //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
                 } else if map[i][tmp].text! == "0" {
                     map[i][tmp].text = map[i][j].text!
                     map[i][j].text = "0"
@@ -164,6 +180,8 @@ class ViewController: UIViewController {
                 }
                 if tmp+1 <= 3 && map[i][tmp+1].text! == map[i][j].text! {
                     map[i][tmp+1].text = String(Int(map[i][j].text!)!*2)
+                    score += Int(map[i][tmp+1].text!)!
+                    scoreUpdate()
                     map[i][j].text = "0"
                     successfulSwipe = true
                     x -= 1
@@ -191,6 +209,8 @@ class ViewController: UIViewController {
                 }
                 if tmp-1 >= x && map[tmp-1][j].text! == map[i][j].text! {
                     map[tmp-1][j].text = String(Int(map[i][j].text!)!*2)
+                    score += Int(map[tmp-1][j].text!)!
+                    scoreUpdate()
                     map[i][j].text = "0"
                     successfulSwipe = true
                     x += 1
@@ -218,6 +238,8 @@ class ViewController: UIViewController {
                 }
                 if tmp+1 <= x && map[tmp+1][j].text! == map[i][j].text! {
                     map[tmp+1][j].text = String(Int(map[i][j].text!)!*2)
+                    score += Int(map[tmp+1][j].text!)!
+                    scoreUpdate()
                     map[i][j].text = "0"
                     successfulSwipe = true
                     x -= 1
