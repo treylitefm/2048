@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,9 @@ class ViewController: UIViewController {
     var map: Array<[UILabel]> = [[], [], [], []]
     var topScore = Int()
     var score = Int()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var saveContext = (UIApplication.shared.delegate as! AppDelegate).saveContext
     
     @IBOutlet var Up: UISwipeGestureRecognizer!
     @IBOutlet var Right: UISwipeGestureRecognizer!
@@ -31,6 +35,42 @@ class ViewController: UIViewController {
         }
         
     }
+    func createTopScore(_ newScore:Int)-> Void {
+        print("createdScore")
+        let score = TopScore(context: context)
+        score.topScore = Int32(newScore)
+        contextSave()
+    }
+    
+    func getTopScore() -> Void {
+        do {
+            print("gotScore")
+            let request: NSFetchRequest<TopScore> = TopScore.fetchRequest()
+            let numbers = try? request.execute()
+            print(numbers ?? "WHAT DID I SIGN UP FOR?!??!?!?")
+            
+            if (numbers?[0]) != nil{
+                self.topScore = Int((numbers?[0].topScore)!)
+                self.TopScoreValue.text = String(score)
+            }
+            else{
+                print("creating a new top score")
+                self.createTopScore(0)
+                contextSave()
+            }
+        }
+    }
+    
+    func updateScore()-> Void {
+        print("updatedScore")
+        let request: NSFetchRequest<TopScore> = TopScore.fetchRequest()
+        let numbers = try? request.execute()
+        if (numbers?[0]) != nil{
+            numbers?[0].topScore = Int32(self.score)
+            contextSave()
+        }
+    }
+    
     
     func resetter(){
         for cell in cells {
@@ -45,10 +85,12 @@ class ViewController: UIViewController {
     
     func scoreUpdate(){
         if score > topScore {
-            topScore = score
+            print("score > topScore")
+            updateScore()
+            self.topScore = self.score
+            TopScoreValue.text = String(topScore)
         }
         ScoreNum.text = String(score)
-        TopScoreValue.text = String(topScore)
     }
     
     let colors: [String:UIColor] = [
@@ -68,6 +110,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getTopScore()
         // Do any additional setup after loading the view, typically from a nib.
         ScoreNum.text = "0"
         TopScoreValue.text = "0"
@@ -88,11 +132,20 @@ class ViewController: UIViewController {
         }
         randomNewTile()
         randomNewTile()
-        randomNewTile()
-        randomNewTile()
         
         updateColors()
     }
+    
+    //Top Score Saving
+    func contextSave() -> Void{
+        do {
+            try context.save()
+        }
+        catch let error as NSError{
+            fatalError("Unresolved error \(error)")
+        }
+    }
+    
     @IBAction func mover(_ sender: UISwipeGestureRecognizer) {
         var success = Bool()
         
