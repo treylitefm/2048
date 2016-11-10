@@ -30,10 +30,28 @@ class ViewController: UIViewController {
     
     @IBAction func resetPinch(_ sender: UIPinchGestureRecognizer) {
         print(sender, sender.state)
+        
         if sender.state == UIGestureRecognizerState.ended{
             resetter()
         }
         
+    }
+    
+    //ALERT
+    func displayAlert() {
+        print("Her!")
+        let alert = UIAlertController(title: "You win!",
+                                      message: "Would you like to keep playing or start over?",
+                                      preferredStyle: .alert)
+        let playOnButton = UIAlertAction(title: "Keep Playing",
+                                         style: .default) {(_) in}
+        let restartButton = UIAlertAction(title: "Restart",
+                                          style: .default) {(_) in}
+        
+        alert.addAction(playOnButton)
+        alert.addAction(restartButton)
+        present(alert, animated: true) {
+        }
     }
     
     func createTopScore(_ newScore:Int)-> Void {
