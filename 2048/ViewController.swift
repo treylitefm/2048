@@ -235,7 +235,7 @@ class ViewController: UIViewController {
                     map[i][j].text = "0"
                     successfulSwipe = true
                     x += 1
-                } else if map[i][tmp].text! == "0" {
+                } else if map[i][tmp].text! == "0" && map[i][j].text! != "0" {
                     map[i][tmp].text = map[i][j].text!
                     map[i][j].text = "0"
                     successfulSwipe = true
@@ -264,7 +264,7 @@ class ViewController: UIViewController {
                     successfulSwipe = true
                     x -= 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
-                } else if map[i][tmp].text! == "0" {
+                } else if map[i][tmp].text! == "0" && map[i][j].text! != "0" {
                     map[i][tmp].text = map[i][j].text!
                     map[i][j].text = "0"
                     successfulSwipe = true
@@ -293,7 +293,7 @@ class ViewController: UIViewController {
                     successfulSwipe = true
                     x += 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
-                } else if map[tmp][j].text! == "0" {
+                } else if map[tmp][j].text! == "0" && map[i][j].text! != "0" {
                     map[tmp][j].text = map[i][j].text!
                     map[i][j].text = "0"
                     successfulSwipe = true
@@ -322,7 +322,7 @@ class ViewController: UIViewController {
                     successfulSwipe = true
                     x -= 1
                     //score.text = String(Int(score.text!)! + Int(map[i][tmp-1].text!)!)
-                } else if map[tmp][j].text! == "0" {
+                } else if map[tmp][j].text! == "0" && map[i][j].text! != "0" {
                     map[tmp][j].text = map[i][j].text!
                     map[i][j].text = "0"
                     successfulSwipe = true
