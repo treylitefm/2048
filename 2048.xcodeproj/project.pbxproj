@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		58AA8D491DD29802007DBD7B /* 2048.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58AA8D471DD29802007DBD7B /* 2048.xcdatamodeld */; };
+		DA8AE9D61DD408B7002D6A14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA8AE9D51DD408B7002D6A14 /* Images.xcassets */; };
+		DA8AE9D81DD408F7002D6A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA8AE9D71DD408F7002D6A14 /* Assets.xcassets */; };
 		EDCCA2351DCCFC99001046D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCCA2341DCCFC99001046D5 /* AppDelegate.swift */; };
 		EDCCA2371DCCFC99001046D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCCA2361DCCFC99001046D5 /* ViewController.swift */; };
 		EDCCA23A1DCCFC99001046D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDCCA2381DCCFC99001046D5 /* Main.storyboard */; };
-		EDCCA23C1DCCFC99001046D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDCCA23B1DCCFC99001046D5 /* Assets.xcassets */; };
 		EDCCA23F1DCCFC99001046D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDCCA23D1DCCFC99001046D5 /* LaunchScreen.storyboard */; };
 		EDCCA24A1DCCFC99001046D5 /* _048Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCCA2491DCCFC99001046D5 /* _048Tests.swift */; };
 		EDCCA2551DCCFC9A001046D5 /* _048UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCCA2541DCCFC9A001046D5 /* _048UITests.swift */; };
@@ -36,11 +37,12 @@
 
 /* Begin PBXFileReference section */
 		58AA8D481DD29802007DBD7B /* 2048.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 2048.xcdatamodel; sourceTree = "<group>"; };
+		DA8AE9D51DD408B7002D6A14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DA8AE9D71DD408F7002D6A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDCCA2311DCCFC99001046D5 /* 2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCCA2341DCCFC99001046D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDCCA2361DCCFC99001046D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDCCA2391DCCFC99001046D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EDCCA23B1DCCFC99001046D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDCCA23E1DCCFC99001046D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDCCA2401DCCFC99001046D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDCCA2451DCCFC99001046D5 /* 2048Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 2048Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,9 +105,10 @@
 				EDCCA2361DCCFC99001046D5 /* ViewController.swift */,
 				58AA8D471DD29802007DBD7B /* 2048.xcdatamodeld */,
 				EDCCA2381DCCFC99001046D5 /* Main.storyboard */,
-				EDCCA23B1DCCFC99001046D5 /* Assets.xcassets */,
 				EDCCA23D1DCCFC99001046D5 /* LaunchScreen.storyboard */,
 				EDCCA2401DCCFC99001046D5 /* Info.plist */,
+				DA8AE9D71DD408F7002D6A14 /* Assets.xcassets */,
+				DA8AE9D51DD408B7002D6A14 /* Images.xcassets */,
 			);
 			path = 2048;
 			sourceTree = "<group>";
@@ -196,7 +199,7 @@
 				TargetAttributes = {
 					EDCCA2301DCCFC99001046D5 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 67K6S2FD8J;
+						DevelopmentTeam = DHM8245DER;
 						ProvisioningStyle = Automatic;
 					};
 					EDCCA2441DCCFC99001046D5 = {
@@ -236,8 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8AE9D61DD408B7002D6A14 /* Images.xcassets in Resources */,
 				EDCCA23F1DCCFC99001046D5 /* LaunchScreen.storyboard in Resources */,
-				EDCCA23C1DCCFC99001046D5 /* Assets.xcassets in Resources */,
+				DA8AE9D81DD408F7002D6A14 /* Assets.xcassets in Resources */,
 				EDCCA23A1DCCFC99001046D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,12 +421,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 67K6S2FD8J;
+				DEVELOPMENT_TEAM = DHM8245DER;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = 2048/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = app2048;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -431,12 +440,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 67K6S2FD8J;
+				DEVELOPMENT_TEAM = DHM8245DER;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = 2048/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = app2048;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app2048;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
