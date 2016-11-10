@@ -29,11 +29,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var TopScoreValue: UILabel!
     
     @IBAction func resetPinch(_ sender: UIPinchGestureRecognizer) {
-        print(sender, sender.state)
         if sender.state == UIGestureRecognizerState.ended{
             resetter()
         }
         
+    }
+    
+    //ALERT
+    func displayAlert() {
+        let alert = UIAlertController(title: "You lost!",
+                                      message: "Start over?",
+                                      preferredStyle: .alert)
+        let restartButton = UIAlertAction(title: "Restart", style: .default) {(_) in self.resetter() }
+        
+        alert.addAction(restartButton)
+        present(alert, animated: true) {
+        }
     }
     
     func createTopScore(_ newScore:Int)-> Void {
@@ -44,27 +55,20 @@ class ViewController: UIViewController {
                 self.contextSave()
             }
         }
-        print("createdScore")
-        
     }
     
     func getTopScore() -> Void {
         context.performAndWait{
             let request: NSFetchRequest<TopScoreClass> = TopScoreClass.fetchRequest()
             do {
-                print("gotScore")
                 let numbers = try? request.execute()
-                print(numbers ?? "WHAT DID I SIGN UP FOR?!??!?!?")
             
                 if numbers! != []{
-                    print(numbers![0].topScore)
                     let top = numbers![0].topScore
                     self.topScore = Int(top)
-                    print(self.topScore)
                     self.TopScoreValue.text = String(self.topScore)
                 }
                 else{
-                    print("creating a new top score")
                     self.createTopScore(0)
                     self.TopScoreValue.text = "0"
                     self.topScore = 0
@@ -74,21 +78,16 @@ class ViewController: UIViewController {
     }
     
     func updateScore()-> Void {
-        print("updatedScore")
         context.performAndWait{
             let request: NSFetchRequest<TopScoreClass> = TopScoreClass.fetchRequest()
             do {
-                print("gotScore")
                 let numbers = try? request.execute()
-                print(numbers ?? "WHAT DID I SIGN UP FOR?!??!?!?")
                 
                 if numbers != nil{
-                    print(numbers!)
                     numbers?[0].topScore = Int32(self.score)
                     self.contextSave()
                 }
                 else{
-                    print("creating a new top score")
                     self.createTopScore(0)
                     self.contextSave()
                 }
@@ -110,7 +109,6 @@ class ViewController: UIViewController {
     
     func scoreUpdate(){
         if score > topScore {
-            print("score > topScore")
             updateScore()
             topScore = self.score
             TopScoreValue.text = String(topScore)
@@ -165,6 +163,27 @@ class ViewController: UIViewController {
         randomNewTile()
         randomNewTile()
         
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        randomNewTile()
+        
         updateColors()
     }
     
@@ -201,11 +220,41 @@ class ViewController: UIViewController {
         }
         
         updateColors()
+        
+        if hasLost() {
+            print("You kinda suck, cuz you lost")
+            displayAlert()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func hasLost() -> Bool {
+        for i in 0...3 {
+            for j in 0...3 {
+                if map[i][j].text! == "0" {
+                    return false
+                }
+                if i > 0 && map[i][j].text! == map[i-1][j].text! {
+                    return false
+                }
+                if i < 3 && map[i][j].text! == map[i+1][j].text! {
+                    return false
+                }
+                if j > 0 && map[i][j].text! == map[i][j-1].text! {
+                    return false
+                }
+                if j < 3 && map[i][j].text! == map[i][j+1].text! {
+                    return false
+                }
+            }
+        }
+        
+        
+        return true
     }
 
     func randomNewTile() {
@@ -219,7 +268,6 @@ class ViewController: UIViewController {
                 } else {
                     cells[r].text = "4"
                 }
-                print(r)
                 break
             }
         }
