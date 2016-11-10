@@ -35,6 +35,51 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getTopScore()
+        // Do any additional setup after loading the view, typically from a nib.
+        ScoreNum.text = "0"
+        TopScoreValue.text = "0"
+        Up.direction = UISwipeGestureRecognizerDirection.up
+        Right.direction = UISwipeGestureRecognizerDirection.right
+        Down.direction = UISwipeGestureRecognizerDirection.down
+        Left.direction = UISwipeGestureRecognizerDirection.left
+        
+        self.view.addGestureRecognizer(Up)
+        self.view.addGestureRecognizer(Right)
+        self.view.addGestureRecognizer(Down)
+        self.view.addGestureRecognizer(Left)
+        self.view.addGestureRecognizer(Reset)
+        
+        for (i,cell) in cells.enumerated() {
+            cell.text = "0"
+            map[Int(floor(Double(i)/4.0))].append(cell)
+        }
+        randomNewTile()
+        randomNewTile()
+        
+        updateColors()
+    }
+    
+    //ALERT
+    func displayAlert() {
+        let alert = UIAlertController(title: "You win!",
+                                      message: "Would you like to keep playing or start over?",
+                                      preferredStyle: .alert)
+        let playOnButton = UIAlertAction(title: "Keep Playing",
+                                         style: .default) {(_) in}
+        let restartButton = UIAlertAction(title: "Restart",
+                                          style: .default) {(_) in}
+        
+        alert.addAction(playOnButton)
+        alert.addAction(restartButton)
+        present(alert, animated: true) {
+        }
+    }
+    
     func createTopScore(_ newScore:Int)-> Void {
         print("createdScore")
         let score = TopScore(context: context)
@@ -107,34 +152,6 @@ class ViewController: UIViewController {
         "1024": UIColor(netHex:0x0B1578),
         "2048": UIColor(netHex:0x070D4A)
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        getTopScore()
-        // Do any additional setup after loading the view, typically from a nib.
-        ScoreNum.text = "0"
-        TopScoreValue.text = "0"
-        Up.direction = UISwipeGestureRecognizerDirection.up
-        Right.direction = UISwipeGestureRecognizerDirection.right
-        Down.direction = UISwipeGestureRecognizerDirection.down
-        Left.direction = UISwipeGestureRecognizerDirection.left
-        
-        self.view.addGestureRecognizer(Up)
-        self.view.addGestureRecognizer(Right)
-        self.view.addGestureRecognizer(Down)
-        self.view.addGestureRecognizer(Left)
-        self.view.addGestureRecognizer(Reset)
-        
-        for (i,cell) in cells.enumerated() {
-            cell.text = "0"
-            map[Int(floor(Double(i)/4.0))].append(cell)
-        }
-        randomNewTile()
-        randomNewTile()
-        
-        updateColors()
-    }
     
     //Top Score Saving
     func contextSave() -> Void{
