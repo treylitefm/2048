@@ -136,6 +136,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(ScoreNum.frame)
+        print(ScoreNum.frame.origin)
+        print(ScoreNum.frame.origin.x)
+        print(ScoreNum.frame.origin.y)
+        print(cells[0].frame.size)
+        
+        cells = cells.sorted(by: {$0.tag < $1.tag})
         getTopScore()
         scoreUpdate()
         // Do any additional setup after loading the view, typically from a nib.
