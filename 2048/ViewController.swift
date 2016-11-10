@@ -163,27 +163,6 @@ class ViewController: UIViewController {
         randomNewTile()
         randomNewTile()
         
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        randomNewTile()
-        
         updateColors()
     }
     
